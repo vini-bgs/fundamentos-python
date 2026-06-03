@@ -2,27 +2,53 @@
 
 
 
-try:
-    nome = input("Olá! Qual o seu nome? ").strip()
-    salario = input(f"Bem vindo, {nome}. Qual o valor do seu salário? ")
 
-    if "," in salario:
-        raise ValueError("Utilize '.' como separador decimal ao invés de ','")
-    
-    salario = float(salario)
+while True:
+    try:
+        nome = input("Olá! Qual o seu nome? ").strip()
 
-    bonus = input("Qual o valor do bônus recebido? (Digite apenas o número do bônus. Ex: bônus de 15%, digite 15)")
+        for l in nome:
+            if not l.isalpha() and l != " ":
+                raise ValueError(f"Você digitou um caractere não válido >> {l} \n"
+                                "Digite novamente...")
+        break
 
-    if "," in bonus:
-        raise ValueError("Utilize '.' como separador decimal ao invés de ','")
-    
-    bonus = float(bonus)
+    except ValueError as err:
+        print(f"Atenção! {err}")
 
-    percent_bonus = (bonus / 100) + 1
+while True:
+    try:
+        salario = input(f"Bem vindo, {nome}. Qual o valor do seu salário? ")
 
-    calculo = 1000 + (salario * percent_bonus)
+        for n in salario:
+            if n == ",":
+                raise ValueError("Utilize '.' ao invés de ',' como separador decimal")
+            elif not n.isnumeric() and n != ".":
+                raise ValueError(f"Você digitou um caractere não válido >. {n}\n"
+                                    "Digite novamente...")
+            
+        salario = float(salario)
+        break
+    except ValueError as err:
+        print(f"Atenção! {err}")
 
-    print(f"{nome}, o seu valor bônus foi de R${calculo}.")
+while True:
+    try:
+        bonus = input("Qual o valor do bônus recebido? (Digite apenas o número do bônus. Ex: bônus de 15%, digite 15)")
 
-except ValueError as err:
-    print(f"Atenção! {err}.")
+        for b in bonus:
+            if n == ",":
+                raise ValueError("Utilize '.' ao invés de ',' como separador decimal")
+            elif not b.isnumeric() and b != ".":
+                raise ValueError(f"Você digitou '{b}' incorretamente. Utilize apenas números: ")
+            
+        bonus = float(bonus)
+        break
+    except ValueError as err:
+        print(f"Atenção! {err}")
+
+percent_bonus = (bonus / 100) + 1
+
+calculo = 1000 + (salario * percent_bonus)
+
+print(f"{nome}, o seu valor bônus foi de R${calculo}.")
