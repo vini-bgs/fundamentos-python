@@ -37,7 +37,7 @@ while True:
         bonus = input("Qual o valor do bônus recebido? (Digite apenas o número do bônus. Ex: bônus de 15%, digite 15)")
 
         for b in bonus:
-            if n == ",":
+            if b == ",":
                 raise ValueError("Utilize '.' ao invés de ',' como separador decimal")
             elif not b.isnumeric() and b != ".":
                 raise ValueError(f"Você digitou '{b}' incorretamente. Utilize apenas números: ")
